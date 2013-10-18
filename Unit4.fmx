@@ -1,0 +1,25 @@
+object Form4: TForm4
+  Left = 0
+  Top = 0
+  Caption = 'Form4'
+  ClientHeight = 883
+  ClientWidth = 601
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop]
+  OnClose = FormClose
+  DesignerMobile = True
+  DesignerWidth = 601
+  DesignerHeight = 905
+  DesignerDeviceName = 'Google Nexus 7'
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object Label1: TLabel
+    Height = 23.000000000000000000
+    Position.X = 128.000000000000000000
+    Position.Y = 104.000000000000000000
+    Text = 'Yet another form!'
+    Width = 257.000000000000000000
+    Trimming = ttCharacter
+  end
+end

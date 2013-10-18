@@ -1,0 +1,164 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop]
+  DesignerMobile = True
+  DesignerWidth = 384
+  DesignerHeight = 592
+  DesignerDeviceName = 'Google Nexus 4'
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object ListBox1: TListBox
+    Align = alBottom
+    Height = 503.000000000000000000
+    Position.Y = 64.000000000000000000
+    TabOrder = 0
+    Width = 384.000000000000000000
+    DefaultItemStyles.ItemStyle = 'listboxitembottomdetail'
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    OnItemClick = ListBox1ItemClick
+    object ListBoxHeader1: TListBoxHeader
+      Height = 48.000000000000000000
+      TabOrder = 0
+      Width = 384.000000000000000000
+      object Label1: TLabel
+        Align = alClient
+        Height = 48.000000000000000000
+        StyleLookup = 'toollabel'
+        Text = 'Databases!'
+        TextAlign = taCenter
+        Width = 384.000000000000000000
+        Trimming = ttCharacter
+      end
+    end
+    object SearchBox1: TSearchBox
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      Align = alTop
+      TabOrder = 1
+      Position.Y = 48.000000000000000000
+      Width = 384.000000000000000000
+      Height = 44.000000000000000000
+      KillFocusByReturn = False
+    end
+  end
+  object Button1: TButton
+    Height = 44.000000000000000000
+    Position.X = 16.000000000000000000
+    Position.Y = 8.000000000000000000
+    TabOrder = 1
+    Text = 'New form'
+    Trimming = ttCharacter
+    Width = 129.000000000000000000
+    OnClick = Button1Click
+  end
+  object Label2: TLabel
+    Height = 23.000000000000000000
+    Position.X = 208.000000000000000000
+    Position.Y = 24.000000000000000000
+    Text = 'Label2'
+    Width = 145.000000000000000000
+    Trimming = ttCharacter
+  end
+  object SQLConnection1: TSQLConnection
+    DriverName = 'IBToGo'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverUnit=Data.DBXInterBase'
+      
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver190.' +
+        'bpl'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
+        'nd.Data.DbxCommonDriver,Version=19.0.0.0,Culture=neutral,PublicK' +
+        'eyToken=91d62ebb5b0d1b1b'
+      
+        'MetaDataPackageLoader=TDBXInterbaseMetaDataCommandFactory,DbxInt' +
+        'erBaseDriver190.bpl'
+      
+        'MetaDataAssemblyLoader=Borland.Data.TDBXInterbaseMetaDataCommand' +
+        'Factory,Borland.Data.DbxInterBaseDriver,Version=19.0.0.0,Culture' +
+        '=neutral,PublicKeyToken=91d62ebb5b0d1b1b'
+      'GetDriverFunc=getSQLDriverINTERBASE'
+      'LibraryName=dbxint.dll'
+      'LibraryNameOsx=libsqlib.dylib'
+      'VendorLib=gds32.dll'
+      'VendorLibWin64=ibtogo64.dll'
+      'VendorLibOsx=libibtogo.dylib'
+      
+        'Database=C:\Users\Public\Documents\RAD Studio\12.0\Samples\Data\' +
+        'dbdemos.gdb'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'Role=RoleName'
+      'MaxBlobSize=-1'
+      'LocaleCode=0000'
+      'IsolationLevel=ReadCommitted'
+      'SQLDialect=3'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'TrimChar=False'
+      'DisplayDriverName=IBLite/ToGo'
+      'AutoUnloadDriver=True'
+      'BlobSize=-1'
+      'ErrorResourceFile='
+      'RoleName=RoleName'
+      'ServerCharSet='
+      'Trim Char=False'
+      'SEP=')
+    BeforeConnect = SQLConnection1BeforeConnect
+    Connected = True
+    Left = 296
+    Top = 472
+  end
+  object SQLDataSet1: TSQLDataSet
+    Active = True
+    CommandText = 'select COMPANY, ADDR1, CUSTNO from CUSTOMER order by COMPANY'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection1
+    Left = 280
+    Top = 360
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = SQLDataSet1
+    ScopeMappings = <>
+    Left = 288
+    Top = 424
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkFillControlToField1: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      Control = ListBox1
+      Track = True
+      FillDataSource = BindSourceDB1
+      FillDisplayFieldName = 'COMPANY'
+      AutoFill = True
+      BufferCount = -1
+      AutoBufferCount = False
+      FillExpressions = <
+        item
+          SourceMemberName = 'CUSTNO'
+          ControlMemberName = 'Detail'
+        end>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkPropertyToFieldTag: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'CUSTNO'
+      Component = ListBox1
+      ComponentProperty = 'TagString'
+    end
+  end
+end

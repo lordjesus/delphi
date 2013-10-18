@@ -1,0 +1,132 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop]
+  OnCreate = FormCreate
+  DesignerMobile = True
+  DesignerWidth = 384
+  DesignerHeight = 592
+  DesignerDeviceName = 'Google Nexus 4'
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object ListBox1: TListBox
+    Align = alBottom
+    Height = 447.000000000000000000
+    Position.Y = 120.000000000000000000
+    TabOrder = 0
+    Width = 384.000000000000000000
+    DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    OnItemClick = ListBox1ItemClick
+    object ListBoxHeader1: TListBoxHeader
+      Height = 48.000000000000000000
+      TabOrder = 0
+      Width = 384.000000000000000000
+      object Label1: TLabel
+        Align = alClient
+        Height = 48.000000000000000000
+        StyleLookup = 'toollabel'
+        Text = 'Database!'
+        TextAlign = taCenter
+        Width = 384.000000000000000000
+        Trimming = ttCharacter
+      end
+    end
+    object SearchBox1: TSearchBox
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      Align = alTop
+      TabOrder = 1
+      Position.Y = 48.000000000000000000
+      Width = 384.000000000000000000
+      Height = 44.000000000000000000
+      KillFocusByReturn = False
+    end
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+    TabOrder = 1
+    Position.X = 16.000000000000000000
+    Position.Y = 11.000000000000000000
+    Width = 145.000000000000000000
+    Height = 32.000000000000000000
+    TextPrompt = 'Enter item'
+    KillFocusByReturn = False
+  end
+  object Button1: TButton
+    Height = 44.000000000000000000
+    Position.X = 168.000000000000000000
+    Position.Y = 8.000000000000000000
+    TabOrder = 2
+    Text = 'Add item'
+    Trimming = ttCharacter
+    Width = 144.000000000000000000
+    OnClick = Button1Click
+  end
+  object SQLConnection1: TSQLConnection
+    ConnectionName = 'IBToGoConnection'
+    DriverName = 'IBToGo'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverUnit=Data.DBXInterBase'
+      
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver190.' +
+        'bpl'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
+        'nd.Data.DbxCommonDriver,Version=19.0.0.0,Culture=neutral,PublicK' +
+        'eyToken=91d62ebb5b0d1b1b'
+      
+        'MetaDataPackageLoader=TDBXInterbaseMetaDataCommandFactory,DbxInt' +
+        'erBaseDriver190.bpl'
+      
+        'MetaDataAssemblyLoader=Borland.Data.TDBXInterbaseMetaDataCommand' +
+        'Factory,Borland.Data.DbxInterBaseDriver,Version=19.0.0.0,Culture' +
+        '=neutral,PublicKeyToken=91d62ebb5b0d1b1b'
+      'GetDriverFunc=getSQLDriverINTERBASE'
+      'LibraryName=dbxint.dll'
+      'LibraryNameOsx=libsqlib.dylib'
+      'VendorLib=gds32.dll'
+      'VendorLibWin64=ibtogo64.dll'
+      'VendorLibOsx=libibtogo.dylib'
+      'Role=RoleName'
+      'MaxBlobSize=-1'
+      'TrimChar=False'
+      'DisplayDriverName=IBLite/ToGo'
+      'AutoUnloadDriver=True'
+      'SEP='
+      'DriverName=IBToGo'
+      
+        'Database=C:\Users\Public\Documents\RAD Studio\12.0\Samples\Data\' +
+        'dbdemos.gdb'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Left = 136
+    Top = 328
+  end
+  object SQLDataSet1: TSQLDataSet
+    CommandText = 
+      'select COMMON_NAME, SPECIES_NAME from BIOLIFE order by COMMON_NA' +
+      'ME'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection1
+    Left = 184
+    Top = 280
+  end
+end

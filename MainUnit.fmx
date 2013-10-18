@@ -1,0 +1,156 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  Caption = 'Form5'
+  ClientHeight = 883
+  ClientWidth = 601
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop]
+  OnCreate = FormCreate
+  DesignerMobile = True
+  DesignerWidth = 601
+  DesignerHeight = 905
+  DesignerDeviceName = 'Google Nexus 7'
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object ListBox1: TListBox
+    Align = alBottom
+    Height = 395.000000000000000000
+    Position.Y = 488.000000000000000000
+    TabOrder = 0
+    Width = 601.000000000000000000
+    DefaultItemStyles.ItemStyle = 'listboxitembottomdetail'
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    OnItemClick = ListBox1ItemClick
+    object ListBoxHeader1: TListBoxHeader
+      Height = 48.000000000000000000
+      TabOrder = 0
+      Width = 601.000000000000000000
+      object Label1: TLabel
+        Align = alClient
+        Height = 48.000000000000000000
+        StyleLookup = 'toollabel'
+        Text = 'Databases'
+        TextAlign = taCenter
+        Width = 601.000000000000000000
+        Trimming = ttCharacter
+      end
+    end
+    object SearchBox1: TSearchBox
+      Touch.InteractiveGestures = [igLongTap, igDoubleTap]
+      Align = alTop
+      TabOrder = 1
+      Position.Y = 48.000000000000000000
+      Width = 601.000000000000000000
+      Height = 44.000000000000000000
+      KillFocusByReturn = False
+    end
+  end
+  object Button1: TButton
+    Height = 44.000000000000000000
+    Position.X = 56.000000000000000000
+    Position.Y = 32.000000000000000000
+    TabOrder = 1
+    Text = 'Drawings'
+    Trimming = ttCharacter
+    Width = 153.000000000000000000
+    OnClick = Button1Click
+  end
+  object SQLConnection1: TSQLConnection
+    DriverName = 'IBToGo'
+    LoginPrompt = False
+    Params.Strings = (
+      'DriverUnit=Data.DBXInterBase'
+      
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver190.' +
+        'bpl'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
+        'nd.Data.DbxCommonDriver,Version=19.0.0.0,Culture=neutral,PublicK' +
+        'eyToken=91d62ebb5b0d1b1b'
+      
+        'MetaDataPackageLoader=TDBXInterbaseMetaDataCommandFactory,DbxInt' +
+        'erBaseDriver190.bpl'
+      
+        'MetaDataAssemblyLoader=Borland.Data.TDBXInterbaseMetaDataCommand' +
+        'Factory,Borland.Data.DbxInterBaseDriver,Version=19.0.0.0,Culture' +
+        '=neutral,PublicKeyToken=91d62ebb5b0d1b1b'
+      'GetDriverFunc=getSQLDriverINTERBASE'
+      'LibraryName=dbxint.dll'
+      'LibraryNameOsx=libsqlib.dylib'
+      'VendorLib=gds32.dll'
+      'VendorLibWin64=ibtogo64.dll'
+      'VendorLibOsx=libibtogo.dylib'
+      
+        'Database=C:\Users\Public\Documents\RAD Studio\12.0\Samples\Data\' +
+        'dbdemos.gdb'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'Role=RoleName'
+      'MaxBlobSize=-1'
+      'LocaleCode=0000'
+      'IsolationLevel=ReadCommitted'
+      'SQLDialect=3'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'TrimChar=False'
+      'DisplayDriverName=IBLite/ToGo'
+      'AutoUnloadDriver=True'
+      'BlobSize=-1'
+      'ErrorResourceFile='
+      'RoleName=RoleName'
+      'ServerCharSet='
+      'Trim Char=False'
+      'SEP=')
+    BeforeConnect = SQLConnection1BeforeConnect
+    Connected = True
+    Left = 328
+    Top = 448
+  end
+  object SQLDataSet1: TSQLDataSet
+    Active = True
+    CommandText = 'select COMPANY, ADDR1, CUSTNO from CUSTOMER'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection1
+    Left = 208
+    Top = 416
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = SQLDataSet1
+    ScopeMappings = <>
+    Left = 344
+    Top = 312
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkFillControlToField2: TLinkFillControlToField
+      Category = 'Quick Bindings'
+      Track = True
+      FillDataSource = BindSourceDB1
+      FillValueFieldName = 'CUSTNO'
+      FillDisplayFieldName = 'COMPANY'
+      AutoFill = True
+      BufferCount = -1
+      AutoBufferCount = False
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillHeaderFieldName = 'ADDR1'
+      FillBreakGroups = <>
+    end
+  end
+  object SQLDataSet2: TSQLDataSet
+    Active = True
+    CommandText = 'select COMPANY, ADDR1, CUSTNO from CUSTOMER'
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection1
+    Left = 256
+    Top = 368
+  end
+end

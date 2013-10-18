@@ -1,0 +1,56 @@
+object DrawForm: TDrawForm
+  Left = 0
+  Top = 0
+  Caption = 'Form5'
+  ClientHeight = 883
+  ClientWidth = 601
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop]
+  OnCreate = FormCreate
+  DesignerMobile = True
+  DesignerWidth = 601
+  DesignerHeight = 905
+  DesignerDeviceName = 'Google Nexus 7'
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object Panel1: TPanel
+    Align = alClient
+    Height = 883.000000000000000000
+    Width = 601.000000000000000000
+    TabOrder = 2
+    object Image1: TImage
+      Touch.InteractiveGestures = [igZoom, igPan, igRotate, igTwoFingerTap, igPressAndtap, igLongTap, igDoubleTap]
+      OnGesture = Image1Gesture
+      MultiResBitmap = <
+        item
+        end>
+      Align = alClient
+      Height = 883.000000000000000000
+      Width = 601.000000000000000000
+      OnClick = Image1Click
+      OnMouseDown = Image1MouseDown
+    end
+  end
+  object Label1: TLabel
+    Height = 177.000000000000000000
+    Position.X = 24.000000000000000000
+    Text = 'Label1'
+    Width = 497.000000000000000000
+    Trimming = ttCharacter
+  end
+  object Button1: TButton
+    Height = 44.000000000000000000
+    Position.X = 16.000000000000000000
+    Position.Y = 360.000000000000000000
+    TabOrder = 1
+    Text = 'Scale'
+    Trimming = ttCharacter
+    Width = 73.000000000000000000
+    OnClick = Button1Click
+  end
+  object GestureManager1: TGestureManager
+    Left = 144
+    Top = 216
+  end
+end
